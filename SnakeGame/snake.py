@@ -68,3 +68,7 @@ class Food:
         self.position = (0, 0)
         self.color = (255, 0, 0)
         self.randomize_position()
+
+    def randomize_position(self):
+        self.position = (random.randint(0, grid_width - 1) * gridsize, random.randint(0, grid_height - 1) * gridsize)
+
