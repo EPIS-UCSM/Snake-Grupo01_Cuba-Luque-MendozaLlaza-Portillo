@@ -15,4 +15,10 @@ class Snake:
     def get_head_position(self):
         return self.positions[0]
 
+    def turn(self, point):
+        if self.length > 1 and (point[0] * -1, point[1] * -1) == self.direction:
+            return
+        else:
+            self.direction = point
+
 class Food:
