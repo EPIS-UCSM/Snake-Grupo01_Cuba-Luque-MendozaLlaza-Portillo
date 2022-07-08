@@ -81,4 +81,11 @@ class TestSnake(unittest.TestCase):
 
     def test_highscore_es_mayor_que_score(self) -> None:
         self.assertTrue(self.snk.highscore > self.snk.score)
+        
+    def test_aumento_de_score_cuando_come_fruta(self) -> None:
+        self.snk.score = 0
+        if self.snk.get_head_position() == self.fruit.position:
+            self.snk.score += 1
+        self.assertTrue(self.snk.score == 1)
+
 
