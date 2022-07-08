@@ -88,4 +88,13 @@ class TestSnake(unittest.TestCase):
             self.snk.score += 1
         self.assertTrue(self.snk.score == 1)
 
+    def test_highscore_se_actualiza_cuando_score_lo_supera(self) -> None:
+        if self.snk.highscore <= self.snk.score:
+            self.snk.highscore = self.snk.score
+        self.assertEquals(self.snk.highscore, self.snk.score)
+
+
+if __name__ == '__main__':
+    unittest.main()
+
 
