@@ -29,3 +29,13 @@ class TestSnake(unittest.TestCase):
     def test_correcta_creacion_de_la_serpiente(self) -> None:
         self.assertTrue(self.snk.get_head_position())
 
+    def test_posicion_inicial_serpiente(self) -> None:
+        self.assertEqual(self.snk.get_head_position(), (screen_width / 2, screen_height / 2))
+        self.assertEqual(self.snk.get_head_position(), (480 / 2, 480 / 2))
+        self.assertEqual(self.snk.get_head_position(), (240.0, 240.0))
+
+    def test_posicion_de_serpiente_varia(self) -> None:
+        self.assertNotEqual(self.snk.get_head_position(), (screen_width / 2, screen_height / 2))
+        self.assertNotEqual(self.snk.get_head_position(), (480 / 2, 480 / 2))
+        self.assertNotEqual(self.snk.get_head_position(), (240.0, 240.0))
+
