@@ -40,6 +40,13 @@ class Snake:
             self.highscore = self.score
         self.score = 0
 
+    def draw(self, surface):
+        for p in self.positions:
+            r = pygame.Rect((p[0], p[1]), (gridsize, gridsize))
+            pygame.draw.rect(surface, self.color, r)
+            pygame.draw.rect(surface, (0, 0, 0), r, 1)
+
+
     def handle_keys(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -57,3 +64,7 @@ class Snake:
 
 
 class Food:
+    def __init__(self):
+        self.position = (0, 0)
+        self.color = (255, 0, 0)
+        self.randomize_position()
