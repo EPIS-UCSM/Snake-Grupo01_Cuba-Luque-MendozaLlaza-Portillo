@@ -28,7 +28,14 @@ class TestSnake(unittest.TestCase):
     # Test serpiente
     def test_correcta_creacion_de_la_serpiente(self) -> None:
         self.assertTrue(self.snk.get_head_position())
-    
+  
+
+    def test_si_hay_colision_de_serpiente_consigo_misma_el_juego_se_resetea(self) -> None:
+        if len(self.snk.positions) > 2:
+            self.snk.reset()
+        self.assertTrue(self.snk.reset())
+
+  
     def test_posicion_inicial_serpiente(self) -> None:
         self.assertEqual(self.snk.get_head_position(), (screen_width / 2, screen_height / 2))
         self.assertEqual(self.snk.get_head_position(), (480 / 2, 480 / 2))
@@ -44,8 +51,5 @@ class TestSnake(unittest.TestCase):
             self.snk.length = 1
         self.assertTrue(self.snk.length == 1)
 
-    def test_si_hay_colision_de_serpiente_consigo_misma_el_juego_se_resetea(self) -> None:
-        if len(self.snk.positions) > 2:
-            self.snk.reset()
-        self.assertTrue(self.snk.reset())
-
+    def test_colision_de_serpiente_con_paredes(self) -> None:
+        pass
