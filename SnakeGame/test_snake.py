@@ -5,7 +5,6 @@ import pygame
 
 from snake import Snake, Food, screen_width, screen_height
 
-
 class TestSnake(unittest.TestCase):
     def setUp(self) -> None:
         snk = Snake()
@@ -25,3 +24,8 @@ class TestSnake(unittest.TestCase):
         self.assertTrue(self.snk.length == 1)
         self.assertTrue(self.snk.positions == (screen_width / 2, screen_height / 2))
         self.assertTrue(self.snk.score == 0)
+
+    # Test serpiente
+    def test_correcta_creacion_de_la_serpiente(self) -> None:
+        self.assertTrue(self.snk.get_head_position())
+
