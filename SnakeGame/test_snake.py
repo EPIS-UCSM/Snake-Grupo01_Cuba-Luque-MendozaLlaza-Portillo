@@ -73,3 +73,12 @@ class TestSnake(unittest.TestCase):
     def test_score_empieza_en_cero(self) -> None:
         self.assertTrue(self.snk.score == 0)
 
+    def test_highscore_empieza_en_cero(self) -> None:
+        self.assertTrue(self.snk.highscore == 0)
+
+    def test_score_y_highscore_son_iguales(self) -> None:
+        self.assertEquals(self.snk.highscore, self.snk.score)
+
+    def test_highscore_es_mayor_que_score(self) -> None:
+        self.assertTrue(self.snk.highscore > self.snk.score)
+
