@@ -32,4 +32,28 @@ class Snake:
             if len(self.positions) > self.length:
                 self.positions.pop()
 
+    def reset(self):
+        self.length = 1
+        self.positions = [((screen_width / 2), (screen_height / 2))]
+        self.direction = random.choice([up, down, left, right])
+        if self.highscore <= self.score:
+            self.highscore = self.score
+        self.score = 0
+
+    def handle_keys(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    self.turn(up)
+                elif event.key == pygame.K_DOWN:
+                    self.turn(down)
+                elif event.key == pygame.K_LEFT:
+                    self.turn(left)
+                elif event.key == pygame.K_RIGHT:
+                    self.turn(right)
+
+
 class Food:
