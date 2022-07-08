@@ -12,4 +12,7 @@ class Snake:
         self.score = 0
         self.highscore = 0
 
+    def get_head_position(self):
+        return self.positions[0]
+
 class Food:
