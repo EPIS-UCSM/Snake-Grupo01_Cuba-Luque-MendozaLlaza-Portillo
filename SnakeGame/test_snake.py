@@ -53,3 +53,6 @@ class TestSnake(unittest.TestCase):
         pass
 
     #Test fruta
+
+    def test_aparicion_de_fruta_al_azar(self) -> None:
+        self.assertTrue(self.fruit.randomize_position() is None)
