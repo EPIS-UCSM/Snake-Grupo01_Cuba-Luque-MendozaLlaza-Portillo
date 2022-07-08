@@ -80,6 +80,16 @@ class Food:
         pygame.draw.rect(surface, self.color, r)
         pygame.draw.rect(surface, (0, 0, 0), r, 1)
 
+def drawGrid(surface):
+    for y in range(0, int(grid_height)):
+        for x in range(0, int(grid_width)):
+            if (x + y) % 2 == 0:
+                r = pygame.Rect((x * gridsize, y * gridsize), (gridsize, gridsize))
+                pygame.draw.rect(surface, (255,255,255), r)
+            else:
+                rr = pygame.Rect((x * gridsize, y * gridsize), (gridsize, gridsize))
+                pygame.draw.rect(surface, (230,230,230), rr)
+
 screen_width = 480
 screen_height = 480
 
@@ -92,3 +102,29 @@ down = (0, 1)
 left = (-1, 0)
 right = (1, 0)
 
+def main():
+    pygame.init()
+
+    clock = pygame.time.Clock()
+    screen = pygame.display.set_mode((screen_width, screen_height), 0, 32)
+
+    surface = pygame.Surface(screen.get_size())
+    surface = surface.convert()
+    drawGrid(surface)
+
+    snake = Snake()
+    food = Food()
+
+    myfont = pygame.font.SysFont("monospace", 16)
+
+    while True:
+        clock.tick(10)
+        snake.handle_keys()
+        drawGrid(surface)
+        snake.move()
+        if snake.get_head_position() == food.position:
+            snake.length += 1
+            if snake.score == snake.highscore:
+                snake.highscore += 1
+            snake.score += 1
+            food.randomize_position()
