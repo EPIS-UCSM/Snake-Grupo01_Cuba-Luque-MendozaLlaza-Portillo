@@ -46,7 +46,6 @@ class Snake:
             pygame.draw.rect(surface, self.color, r)
             pygame.draw.rect(surface, (0, 0, 0), r, 1)
 
-
     def handle_keys(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -80,15 +79,17 @@ class Food:
         pygame.draw.rect(surface, self.color, r)
         pygame.draw.rect(surface, (0, 0, 0), r, 1)
 
+
 def drawGrid(surface):
     for y in range(0, int(grid_height)):
         for x in range(0, int(grid_width)):
             if (x + y) % 2 == 0:
                 r = pygame.Rect((x * gridsize, y * gridsize), (gridsize, gridsize))
-                pygame.draw.rect(surface, (255,255,255), r)
+                pygame.draw.rect(surface, (255, 255, 255), r)
             else:
                 rr = pygame.Rect((x * gridsize, y * gridsize), (gridsize, gridsize))
-                pygame.draw.rect(surface, (230,230,230), rr)
+                pygame.draw.rect(surface, (230, 230, 230), rr)
+
 
 screen_width = 480
 screen_height = 480
@@ -101,6 +102,7 @@ up = (0, -1)
 down = (0, 1)
 left = (-1, 0)
 right = (1, 0)
+
 
 def main():
     pygame.init()
@@ -128,3 +130,14 @@ def main():
                 snake.highscore += 1
             snake.score += 1
             food.randomize_position()
+        snake.draw(surface)
+        food.draw(surface)
+        screen.blit(surface, (0, 0))
+        text1 = myfont.render("Score {0}".format(snake.score), 1, (0, 0, 0))
+        text2 = myfont.render("Highcore {0}".format(snake.highscore), 1, (0, 0, 0))
+        screen.blit(text1, (5, 10))
+        screen.blit(text2, (screen_width / 2, 10))
+        pygame.display.update()
+
+
+main()
